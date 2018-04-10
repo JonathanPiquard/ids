@@ -13,20 +13,27 @@ const extractors = {
   'postgresdb': extractDatabase(postgresp(urls.postgresdb))
 };
 
-const connect = (callback) => parallel(extractors, (err, databases) => {
-  if (err) throw err;
-  callback(databases)
-});
-
 class databases {
   constructor() {
-    const _this = this;
-    parallel(extractors, (err, { mongodb, postgresdb }) => {
+    this.mongodb = null;
+    this.postgresdb = null;
+  }
+
+  connect(callback) {
+    let _this = this;
+    parallel(extractors, (err, databases) => {
       if (err) throw err;
-      _this.mongodb = mongodb;
-      
+      throw new Error('damn1');
+
+      _this.mongodb = databases.mongodb;
+      _this.postgresdb = databases.postgresdb;
+      callback(databases);
     });
+  }
+
+  getMongodb() {
+    return this.mongodb;
   }
 }
 
-export default { connect }
+export default new databases()
