@@ -4,7 +4,7 @@
   "description": "comparison between sql and no-sql on a nodejs server",
   "main": "index.js",
   "scripts": {
-    "start": "node start babel index.js --presets es2015,stage-2",
+    "start": "nodemon index.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,10 +12,10 @@
   "devDependencies": {
     "async": "^2.6.0",
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "express": "^4.16.3",
     "mongoose": "^5.0.12",
+    "nodemon": "^1.17.3",
     "pg-promise": "^8.2.2"
   }
 }

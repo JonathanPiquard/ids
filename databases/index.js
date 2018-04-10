@@ -1,24 +1,32 @@
-import databases, { urls } from '../config/databases';
+
+import mongop from './mongop';
+import postgresp from './postgresp';
+import { urls } from '../config/databases';
+
 import { parallel } from 'async';
 
-const handlePromise = (promise) => (callback) => promise.then((db) => callback(null, db)).catch((err) => callback(err));
+const extractDatabase = (promise) => (callback) => promise.then((db) => callback(null, db), (err) => callback(err));
 
 
-let databases_connect = {};
+const extractors = {
+  'mongodb': extractDatabase(mongop(urls.mongodb)),
+  'postgresdb': extractDatabase(postgresp(urls.postgresdb))
+};
 
-databases.forEach((database) => {
-  import dbp from `./${database}`;
-
-  databases_connect[database] = handlePromise(dbp(urls[database]));
+const connect = (callback) => parallel(extractors, (err, databases) => {
+  if (err) throw err;
+  callback(databases)
 });
 
-const connect = (callback) => parallel(
-  databases_connect,
-  (err, databases) => {
-    if (err) throw err;
-
-    callback(databases);
+class databases {
+  constructor() {
+    const _this = this;
+    parallel(extractors, (err, { mongodb, postgresdb }) => {
+      if (err) throw err;
+      _this.mongodb = mongodb;
+      
+    });
   }
-)};
+}
 
 export default { connect }

@@ -1,9 +1,7 @@
 
-// all url are prefixed with '/api'
+// all url are prefixed with '/api/${database}'
 
 export default [
-  // e.i. { method: 'post', url: '/user', controllerAction: (controllers) => controllers.UserController.create },
-
-  { method: 'post', url: '/user', controllerAction: ({ UserController }) => UserController.create },
-  { method: 'get', url: '/user/:id', controllerAction: ({ UserController }) => UserController.findOne }
+  { method: 'post', url: '/user', handler: 'UserController.create' },
+  { method: 'get', url: '/user/:id', handler: 'UserController.findOne' }
 ]

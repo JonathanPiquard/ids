@@ -1,3 +1,5 @@
+import { mongodb } from '../../../databases';
+
 import { Schema } from 'mongoose';
 import EmailSchema from './utils/EmailSchema';
 
@@ -11,4 +13,4 @@ const UserSchema = new Schema({
 const User = mongodb.model('User', UserSchema);
 
 
-default export User
+export default User

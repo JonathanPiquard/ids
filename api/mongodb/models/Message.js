@@ -10,4 +10,4 @@ const MessageSchema = new Schema({
 const Message = mongodb.model('Message', MessageSchema);
 
 
-default export Message
+export default Message
