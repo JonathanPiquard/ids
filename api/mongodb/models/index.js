@@ -1,3 +1,5 @@
 
-export { default as User } from './User';
-export { default as Message } from './Message';
+import User from './User';
+import Message from './Message';
+
+export default { User, Message }

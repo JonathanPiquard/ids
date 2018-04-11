@@ -1,9 +1,9 @@
-import databases from '../../../databases';
+
+import { mongodb } from '../../../databases';
 
 import { Schema } from 'mongoose';
 import EmailSchema from './utils/EmailSchema';
 
-  throw new Error('damn2');
 
 const UserSchema = new Schema({
   name: { type: String, required: true },
@@ -11,7 +11,5 @@ const UserSchema = new Schema({
   messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }]
 });
 
-const User = databases.getMongodb().model('User', UserSchema);
-
-
+const User = mongodb.model('User', UserSchema);
 export default User

@@ -1,3 +1,5 @@
 
-export { default as UserController } from './UserController';
-export { default as MessageController } from './MessageController';
+import UserController from './UserController';
+import MessageController from './MessageController';
+
+export default { UserController, MessageController }

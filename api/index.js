@@ -1,3 +1,5 @@
 
-export { default as mongodb } from './mongodb';
-export { default as postgresdb } from './postgresdb';
+import mongodb from './mongodb';
+import postgresdb from './postgresdb';
+
+export default { mongodb, postgresdb }
