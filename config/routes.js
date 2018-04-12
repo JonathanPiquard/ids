@@ -3,5 +3,5 @@
 
 export default [
   { method: 'post', url: '/user', handler: 'UserController.create' },
-  { method: 'get', url: '/user/:id', handler: 'UserController.findOne' }
+  { method: 'get', url: '/user/:id', handler: 'UserController.findById' }
 ]

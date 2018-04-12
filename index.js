@@ -1,11 +1,14 @@
 
+// Mongoose is a mongodb object modeling for Node.js. Almost every Node.js delevoper uses Mongoose.
+import mongoose from 'mongoose';
 import express from 'express';
 const app = express();
+mongoose.connect(uris.mongodb);
 
-import UserController from './api/mongodb/controllers';
+import controllers from './api/controllers';
 import routes from './config/routes';
+import { uris } from './config/databases';
 
-console.log(UserController);
 
 app.use(express.static('public'));
 
@@ -17,8 +20,7 @@ app.use('/', (req, res) => {
 //bind api requests to controllers
 routes.forEach(({ method, url, handler }) => {
   const [ controller, action ] = handler.split('.');
-  app[method](`/api/mongodb${url}`, api.mongodb.controllers[controller][action]);
-  app[method](`/api/postgresdb${url}`, api.postgresdb.controllers[controller][action]);
+  app[method](`/api${url}`, controllers[controller][action]);
 });
 
 app.listen(3000, () => console.log('Listening on port 3000!'));
