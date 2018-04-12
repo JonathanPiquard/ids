@@ -6,19 +6,28 @@ import User from '../models/User';
 const MessageController = {
 
   create: (req, res) => {
-    Message.create(req.body)
-           .then(message => res.json(message))
-           .catch(err => res.resolve(err));
+    User.findById(req.body.author)
+        .then(user => {
+          Message.create(req.body)
+                 .then(message => {
+                    user.messages.push(message);
+                    user.save();
+                    res.json(message);
+                  });
+        })
+        .catch(err => res.resolve(err));
   },
 
   find: (req, res) => {
     Message.find()
+           .populate('author')
            .then(messages => res.json(messages))
            .catch(err => res.resolve(err));
   },
 
   findById: (req, res) => {
     Message.findById(req.params.id)
+           .populate('author')
            .then(message => res.json(message))
            .catch(err => res.resolve(err));
   },
@@ -35,7 +44,15 @@ const MessageController = {
 
   delete: (req, res) => {
     Message.findByIdAndRemove(req.params.id)
-           .then(message => res.status(200).send(message.id))
+           .then(message => {
+              User.findById(message.author)
+                  .then(author => {
+                     author.messages = author.messages.filter(msg => msg !== message.id);
+                     author.save();
+                     res.status(200).send(message.id);
+                  })
+                  .catch(err => res.resolve(err));
+           })
            .catch(err => res.resolve(err));
   }
 

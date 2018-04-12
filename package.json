@@ -13,9 +13,10 @@
     "async": "^2.6.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongoose": "^5.0.12",
-    "nodemon": "^1.17.3",
-    "pg": "^7.4.1"
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.3"
   }
 }

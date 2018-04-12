@@ -12,12 +12,14 @@ const UserController = {
 
   find: (req, res) => {
     User.find()
+        .populate('messages')
         .then(users => res.json(users))
         .catch(err => res.resolve(err));
   },
 
   findById: (req, res) => {
     User.findById(req.params.id)
+        .populate('messages')
         .then(user => res.json(user))
         .catch(err => res.resolve(err));
   },

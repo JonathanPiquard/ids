@@ -11,3 +11,29 @@
 ```
 npm start
 ```
+
+## Send Requests - Postman
+
+You can use [Postman](https://www.getpostman.com/apps).
+
+### Create an User
+
+POST request on localhost:3000/user with a body (x-www-form-urlencoded) that looks like { name: 'John', email: 'john.doe@mailbox.com' }
+
+### Get all Users
+
+GET request on localhost:3000/users
+
+### Get an User
+
+GET request on localhost:3000/user/some_id
+
+### Update an User
+
+PUT request on localhost:3000/user/some_id with a body (x-www-form-urlencoded) that looks like { ...changes }
+
+### Delete an User
+
+DELETE request on localhost:3000/user/some_id
+
+### Same for Messages
