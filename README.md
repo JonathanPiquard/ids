@@ -1,6 +1,6 @@
 # Node.js server with MongoDB
 
-## Install
+## Requirements
 
 * [Node.js](https://nodejs.org/en/download/current/)
 * [MongoDB](https://docs.mongodb.com/manual/installation/?jmp=footer#mongodb-community-edition)
