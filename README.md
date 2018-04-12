@@ -12,28 +12,26 @@
 npm start
 ```
 
-## Send Requests - Postman
+## Test the server with [Postman](https://www.getpostman.com/apps)
 
-You can use [Postman](https://www.getpostman.com/apps).
-
-### Create an User
+* #### Create an User
 
 POST request on localhost:3000/user with a body (x-www-form-urlencoded) that looks like { name: 'John', email: 'john.doe@mailbox.com' }
 
-### Get all Users
+* #### Get all Users
 
 GET request on localhost:3000/users
 
-### Get an User
+* #### Get an User
 
 GET request on localhost:3000/user/some_id
 
-### Update an User
+* #### Update an User
 
 PUT request on localhost:3000/user/some_id with a body (x-www-form-urlencoded) that looks like { ...changes }
 
-### Delete an User
+* #### Delete an User
 
 DELETE request on localhost:3000/user/some_id
 
-### Same for Messages
+* #### Same for Message
