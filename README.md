@@ -5,6 +5,11 @@
 * [Node.js](https://nodejs.org/en/download/current/)
 * [MongoDB](https://docs.mongodb.com/manual/installation/?jmp=footer#mongodb-community-edition)
 
+## Install
+```
+npm install
+```
+
 ## Usage
 [You will need to run MongoDB before running the server.](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#start-mongodb)
 
