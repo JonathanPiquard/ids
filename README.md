@@ -40,3 +40,8 @@ PUT request on localhost:3000/user/some_id with a body (x-www-form-urlencoded) t
 DELETE request on localhost:3000/user/some_id
 
 * #### Same for Message
+
+
+## Authors
+
+Jonathan Piquard & Hosseim Nahal
